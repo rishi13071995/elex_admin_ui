@@ -22,10 +22,10 @@ export class LoginComponent {
     private router: Router,
   ) { }
   async loginHandler() {
-    if (this.value.email !== "swadesh@gmail.com" || this.value.password !== "12345678") 
+    if (this.value.email !== "namashkar@gmail.com" || this.value.password !== "12345678") 
     return alert("Email or password wrong, please try again!")
     console.log("email", this.value.email)
     console.log("password", this.value.password)
-    this.router.navigateByUrl("/dashboard")
+    this.router.navigateByUrl("/admin/dashboard")
   }
 }

@@ -29,7 +29,4 @@ export class DefaultComponent {
   async ngAfterContentChecked() {
     this.cdref.detectChanges();
   }
-  async logoutHandler() {
-    this.router.navigateByUrl("/login")
-  }
 }
