@@ -1,0 +1,12 @@
+<nz-card style="width:300px;" nzTitle="Swadesh Basket Admin" [nzExtra]="extraTemplate"> 
+    <input nz-input placeholder="email" [(ngModel)]="value.email" type="text" />
+    <br />
+    <br />
+    <input nz-input placeholder="password" [(ngModel)]="value.password" type="password"/>
+    <br />
+    <br />
+    <button nz-button nzType="primary" class="loginBtn" (click)="loginHandler()" >Login</button>
+</nz-card>
+<ng-template #extraTemplate>
+    <span nz-icon="large" class="userIcon" nzType="user" nzTheme="outline"></span>
+</ng-template>
