@@ -10,6 +10,7 @@ import {
   SettingOutline,
   LogoutOutline,
   LoginOutline,
+  UploadOutline,
   ArrowLeftOutline
 } from '@ant-design/icons-angular/icons';
 import { NzIconModule } from 'ng-zorro-antd/icon';
