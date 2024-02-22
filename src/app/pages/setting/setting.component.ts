@@ -2,10 +2,15 @@ import { Component, ChangeDetectorRef, Input, AfterContentChecked } from '@angul
 import { BreadcrumbService } from '../../subjects/breadcrumb.service';
 import { Router } from '@angular/router';
 import { CommonComponent } from './components/common/common.component';
+import { AddbuttonComponent } from '../../components/addbutton/addbutton.component';
+import { UploadfileComponent } from '../../components/uploadfile/uploadfile.component';
+import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
+import { TableComponent } from '../../components/table/table.component';
+
 @Component({
   selector: 'app-setting',
   standalone: true,
-  imports: [CommonComponent],
+  imports: [CommonComponent, AddbuttonComponent, UploadfileComponent, SearchbarComponent, TableComponent],
   templateUrl: './setting.component.html',
   styleUrl: './setting.component.less'
 })

@@ -2,10 +2,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from '../default/default.component';
 import { BreadcrumbService } from '../../subjects/breadcrumb.service';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DefaultComponent],
+  imports: [CommonModule, DefaultComponent,NzGridModule, NzCardModule, NzIconModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.less'
 })

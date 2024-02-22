@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NzTableModule, FormsModule, CommonModule],
+  imports: [NzTableModule, FormsModule, CommonModule, NzIconModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.less'
 })
@@ -70,7 +71,7 @@ export class TableComponent {
   }
 
   ngOnInit(): void {
-    this.listOfData = new Array(5).fill(0).map((_, index) => ({
+    this.listOfData = new Array(1000).fill(0).map((_, index) => ({
       id: index,
       name: `John Wicks ${index}`,
       age: 32,
