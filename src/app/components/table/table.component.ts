@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NzTableModule, FormsModule, CommonModule, NzIconModule],
+  imports: [NzTableModule, FormsModule, CommonModule, NzIconModule, NzSpinModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.less'
 })
 export class TableComponent {
+  @Input() tableAttributes: any = [{ keys: [] }, { values: [] }, { actions: [] }]
+  nameKeys: any = []
   listOfSelection = [
     {
       text: 'Select All Row',
@@ -71,6 +74,9 @@ export class TableComponent {
   }
 
   ngOnInit(): void {
+    console.log("tableAttributes", this.tableAttributes)
+    this.nameKeys = Object.keys(this.tableAttributes[1].values[0])
+    console.log("this.nameKeys", this.nameKeys)
     this.listOfData = new Array(1000).fill(0).map((_, index) => ({
       id: index,
       name: `John Wicks ${index}`,

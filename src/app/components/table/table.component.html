@@ -9,25 +9,24 @@ nzShowSizeChanger
 <thead>
   <tr>
     <th
-      nzWidth="100px"
-      [nzSelections]="listOfSelection"
-      [(nzChecked)]="checked"
-      [nzIndeterminate]="indeterminate"
-      (nzCheckedChange)="onAllChecked($event)"
+    nzWidth="80px"
+    [nzSelections]="listOfSelection"
+    [(nzChecked)]="checked"
+    [nzIndeterminate]="indeterminate"
+    (nzCheckedChange)="onAllChecked($event)"
     ></th>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Address</th>
-    <th>Acitons</th>
+    <th *ngFor="let key of tableAttributes[0].keys">{{key}}</th>
   </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let data of rowSelectionTable.data">
+  <div *ngIf="tableAttributes[0].keys.length === 0" class="example">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+  <tr *ngFor="let data of tableAttributes[1].values">
     <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
-    <td>{{ data.name }}</td>
-    <td>{{ data.age }}</td>
-    <td>{{ data.address }}</td>
-    <td class="actionItems"> <span nz-icon nzType="edit" nzTheme="outline"></span> | <span nz-icon nzType="delete" nzTheme="outline"></span></td>
+    <td *ngFor="let key of nameKeys">{{data[key]}}</td>
+    <td class="actionItems">
+      <span *ngFor="let action of tableAttributes[2].actions" nz-icon nzType="{{action}}" nzTheme="outline"><span *ngIf="action === 'delete'">  |</span></span>
   </tr>
 </tbody>
 </nz-table>

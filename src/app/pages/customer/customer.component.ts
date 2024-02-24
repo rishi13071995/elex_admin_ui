@@ -14,6 +14,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrl: './customer.component.less'
 })
 export class CustomerComponent {
+  myTableAttributes: any = [{ keys: ["Name", "Age", "Adderss", "Phone", "Email", "Actions"] }, { values: [{ name: "John Wicks", age: "29", adderss: "Kolkata", phone: "9876578493", email: "john@gmail.com"},{ name: "Pitar Sen", age: "39", adderss: "Kolkata",  phone: "9876571293", email: "pitar@gmail.com"}] }, { actions: ["edit", "delete"] }]
   myLink: any = [{ url:"/admin/customers", name:"Customers"}]
   constructor(
     private breadcrumb: BreadcrumbService

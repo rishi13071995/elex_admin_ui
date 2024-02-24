@@ -13,6 +13,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrl: './product.component.less'
 })
 export class ProductComponent {
+  myTableAttributes: any = [{ keys: ["Name", "Parent Category", "Child Category", "Qty.", "MRP Price", "Discounted Price", "Tax Slab", "Total Price", "Acitve", "Created At.", "Modified At.", "Actions"] }, { values: [{ name: "Rasberry", parentCategory: "Grocery", childCategory:"Dry Fruit", itemQty: 1, mrpPrice: 120.00, discountPrice: 118.20, taxSlab: "5%", totalPrice: 120.20, active: "Yes", createdAt: "20-02-2021 10:21", modifiedAt: "20-02-2021 17:30"}] }, { actions: ["edit", "delete"] }]
   myLink = [{url: "/admin/products", name: "Products"}]
   constructor(
     private breadcrumb: BreadcrumbService
