@@ -19,9 +19,9 @@ nzShowSizeChanger
   </tr>
 </thead>
 <tbody>
-  <div *ngIf="tableAttributes[0].keys.length === 0" class="example">
+  <!-- <div *ngIf="tableAttributes[0].keys.length === 0" class="example">
     <nz-spin nzSimple></nz-spin>
-  </div>
+  </div> -->
   <tr *ngFor="let data of tableAttributes[1].values">
     <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
     <td *ngFor="let key of nameKeys">{{data[key]}}</td>
