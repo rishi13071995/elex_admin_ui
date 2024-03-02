@@ -1,7 +1,7 @@
-<app-common [navLink]="myLink"></app-common>
+<app-common (newItemEvent)="receiveMessage($event)" [navLink]="myLink"></app-common>
 <app-searchbar class="searchItem"></app-searchbar>&nbsp;
 <div class="leftItems">
     <app-uploadfile></app-uploadfile>&nbsp;
     <app-addbutton></app-addbutton>
 </div>
-<app-table></app-table>
+<app-table [tableAttributes]="myTableAttributes"></app-table>
