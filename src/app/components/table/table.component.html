@@ -4,7 +4,7 @@ class="tableItem"
 nzShowSizeChanger
 [nzData]="listOfData"
 (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
-[nzScroll]="{ y: '260px' }"
+[nzScroll]="{ y: '260px', x: '1100px' }"
 >
 <thead>
   <tr>
@@ -19,12 +19,14 @@ nzShowSizeChanger
   </tr>
 </thead>
 <tbody>
-  <!-- <div *ngIf="tableAttributes[0].keys.length === 0" class="example">
-    <nz-spin nzSimple></nz-spin>
-  </div> -->
   <tr *ngFor="let data of tableAttributes[1].values">
-    <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
-    <td *ngFor="let key of nameKeys">{{data[key]}}</td>
+    <td *ngFor="let key of nameKeys">
+      <table *ngIf="key === '_id'">
+        <td [nzChecked]="setOfCheckedId.has(data[key])" (nzCheckedChange)="onItemChecked(data[key], $event)"></td>
+      </table>
+      <img class="imgIcon" *ngIf="key === 'imgUrl' && key !== '_id'" src="{{data[key]}}" >
+      <p *ngIf="key !== 'imgUrl' && key !== '_id'">{{data[key]}}</p>
+    </td>
     <td class="actionItems">
       <span *ngFor="let action of tableAttributes[2].actions" nz-icon nzType="{{action}}" nzTheme="outline"><span *ngIf="action === 'delete'">  |</span></span>
   </tr>

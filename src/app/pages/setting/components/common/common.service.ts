@@ -9,6 +9,6 @@ export class CommonService {
   pincodeDataResp : any = [{ keys: ["Name", "Pincode", "Actions"] }, { values: [{ name: "Baghbazar", value: "700029"}] }, { actions: ["edit", "delete"] }]
   contactUsDataResp : any = [{ keys: ["Name", "Details", "Actions"] }, { values: [{ name: "Email", value: "namashkar@gmail.com"}] }, { actions: ["edit", "delete"] }]
   socialLinkDataResp : any = [{ keys: ["Name", "Links", "Actions"] }, { values: [{ name: "Facebook", value: "http://localhost:3000"}] }, { actions: ["edit", "delete"] }]
-  sliderDataResp = [{ keys: ["Name", "Banner Position", "Actions"] }, { values: [{ name: "Header", value: "Header"}] }, { actions: ["edit", "delete"] }]
+  sliderDataResp = [{ keys: [ "Name", "Banner Posititon", "Actions"] }, { values: [{ name: "Banner 1", value: "Header"}] }, { actions: ["edit", "delete"] }]
   constructor() { }
 }

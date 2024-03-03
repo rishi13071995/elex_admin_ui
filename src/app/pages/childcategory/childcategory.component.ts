@@ -13,7 +13,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrl: './childcategory.component.less'
 })
 export class ChildcategoryComponent {
-  myTableAttributes: any = [{ keys: ["Name", "Parent Category", "Description", "Created At.", "Modified At.", "Actions"] }, { values: [{ name: "Dry fruits", parentCategory: "Grocery", description:"All types. of dry fruits are available", createdAt: "20-02-2021 10:21", modifiedAt: "20-02-2021 17:30"},{ name: "Speaker ", parentCategory: "Electronics", description:"Speaker items", createdAt: "20-02-2021 12:45", modifiedAt: "20-02-2021 15:23"}] }, { actions: ["edit", "delete"] }]
+  myTableAttributes: any = [{ keys: ["Image", "Name", "Parent Category", "Description", "Created At.", "Modified At.", "Actions"] }, { values: [{ _id: "x1", imgUrl: "assets/rasberry.jpg", name: "Dry fruits", parentCategory: "Grocery", description:"All types. of dry fruits are available", createdAt: "20-02-2021 10:21", modifiedAt: "20-02-2021 17:30"},{ _id: "x2", imgUrl: "assets/rasberry.jpg", name: "Speaker ", parentCategory: "Electronics", description:"Speaker items", createdAt: "20-02-2021 12:45", modifiedAt: "20-02-2021 15:23"}] }, { actions: ["edit", "delete"] }]
   myLink: any = [{ url:"/admin/childcategories", name:"Child Categories"}]
   constructor(
     private breadcrumb: BreadcrumbService

@@ -15,73 +15,53 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 export class TableComponent {
   @Input() tableAttributes: any = [{ keys: [] }, { values: [] }, { actions: [] }]
   nameKeys: any = []
+  listOfData: any = []
   listOfSelection = [
     {
       text: 'Select All Row',
       onSelect: () => {
         this.onAllChecked(true);
       }
-    },
-    {
-      text: 'Select Odd Row',
-      onSelect: () => {
-        this.listOfCurrentPageData.forEach((data: any, index: any) => this.updateCheckedSet(data.id, index % 2 !== 0));
-        this.refreshCheckedStatus();
-      }
-    },
-    {
-      text: 'Select Even Row',
-      onSelect: () => {
-        this.listOfCurrentPageData.forEach((data: any, index:any) => this.updateCheckedSet(data.id, index % 2 === 0));
-        this.refreshCheckedStatus();
-      }
     }
   ];
   checked = false;
   indeterminate = false;
   listOfCurrentPageData: any = [];
-  listOfData: any = [];
-  setOfCheckedId = new Set<number>();
+  setOfCheckedId = new Set<any>();
 
-  updateCheckedSet(id: number, checked: boolean): void {
+  updateCheckedSet(_id: any, checked: boolean): void {
+    console.log(_id)
     if (checked) {
-      this.setOfCheckedId.add(id);
+      this.setOfCheckedId.add(_id);
     } else {
-      this.setOfCheckedId.delete(id);
+      this.setOfCheckedId.delete(_id);
     }
   }
 
-  onItemChecked(id: number, checked: boolean): void {
-    this.updateCheckedSet(id, checked);
+  onItemChecked(_id: any, checked: boolean): void {
+    console.log(_id)
+    this.updateCheckedSet(_id, checked);
     this.refreshCheckedStatus();
   }
 
   onAllChecked(value: boolean): void {
-    this.listOfCurrentPageData.forEach((item: any) => this.updateCheckedSet(item.id, value));
+    this.listOfCurrentPageData.forEach((item: any) => this.updateCheckedSet(item._id, value));
     this.refreshCheckedStatus();
   }
 
   onCurrentPageDataChange($event: any): void {
-    console.log("event", $event)
     this.listOfCurrentPageData = $event;
     this.refreshCheckedStatus();
   }
 
   refreshCheckedStatus(): void {
-    this.checked = this.listOfCurrentPageData.every((item: any) => this.setOfCheckedId.has(item.id));
-    this.indeterminate = this.listOfCurrentPageData.some((item: any) => this.setOfCheckedId.has(item.id)) && !this.checked;
-    console.log("indeterminate", this.indeterminate)
+    this.checked = this.listOfCurrentPageData.every((item: any) => this.setOfCheckedId.has(item._id));
+    this.indeterminate = this.listOfCurrentPageData.some((item: any) => this.setOfCheckedId.has(item._id)) && !this.checked;
   }
 
   ngOnInit(): void {
     console.log("tableAttributes", this.tableAttributes)
     this.nameKeys = Object.keys(this.tableAttributes[1].values[0])
-    console.log("this.nameKeys", this.nameKeys)
-    this.listOfData = new Array(1000).fill(0).map((_, index) => ({
-      id: index,
-      name: `John Wicks ${index}`,
-      age: 32,
-      address: `London, Park Lane no. ${index}`
-    }));
+    this.listOfData = this.tableAttributes[1].values
   }
 }
