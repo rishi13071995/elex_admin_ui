@@ -32,58 +32,41 @@ export class CommonComponent implements OnInit, AfterContentChecked, OnChanges {
   }
 
   async getUrlFunc() {
-    if(this.router.url === "/admin/settings/taxdelivery-charges") {
-      this.myTableAttributes = [{ keys: ["Name", "Tax Slabe", "Actions"] }, { values: [{ name: "Grocery", taxSlab: "20%"},{ name: "Food", taxSlab: "15%"}] }, { actions: ["edit", "delete"] }]
-      this.newItemEvent.emit(this.myTableAttributes);
-    }
-    if(this.router.url === "/admin/settings/cms") {
-      this.myTableAttributes = [{ keys: ["Name", "Description", "Actions"] }, { values: [{ name: "Grocery", taxSlab: "20%"},{ name: "Food", taxSlab: "15%"}] }, { actions: ["edit", "delete"] }]
-      this.newItemEvent.emit(this.myTableAttributes);
-    }
-    if(this.router.url === "/admin/settings/pincodes") {
-      this.newItemEvent.emit("Pincodes.");
-    }
-    if(this.router.url === "/admin/settings/sliders") {
-      this.newItemEvent.emit("Sliders.");
-    }
-    if(this.router.url === "/admin/settings/contact-details") {
-      this.newItemEvent.emit("Contact Details.");
-    }
-    if(this.router.url === "/admin/settings/social-links") {
-      this.newItemEvent.emit("Social Links.");
-    }
+   this.dataEmitFunc(this.router.url)
   }
 
   async getUrlPipeFunc() {
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
   ).subscribe((event: any) => {
-    if(event.url === "/admin/settings/taxdelivery-charges") {
-      this.navLink[1] = {url: event.url, name: "Tax & Delivery Charges"}
-      this.newItemEvent.emit(this.myTableAttributes);
-    }
-    if(event.url === "/admin/settings/cms") {
-      this.navLink[1] = {url: event.url, name: "CMS"}
-      this.myTableAttributes = [{ keys: ["Name", "Description", "Actions"] }, { values: [{ name: "Grocery", taxSlab: "20%"},{ name: "Food", taxSlab: "15%"}] }, { actions: ["edit", "delete"] }]
-      this.newItemEvent.emit(this.myTableAttributes);
-    }
-    if(event.url === "/admin/settings/pincodes") {
-      this.navLink[1] = {url: event.url, name: "Pincodes"}
-      this.newItemEvent.emit("hellow....pincodes");
-    }
-    if(event.url === "/admin/settings/sliders") {
-      this.navLink[1] = {url: event.url, name: "Sliders"}
-      this.newItemEvent.emit("hellow....sliders");
-    }
-    if(event.url === "/admin/settings/contact-details") {
-      this.navLink[1] = {url: event.url, name: "Contact Details"}
-      this.newItemEvent.emit("hellow....contact details");
-    }
-    if(event.url === "/admin/settings/social-links") {
-      this.navLink[1] = {url: event.url, name: "Social Links"}
-      this.newItemEvent.emit("hellow....social links");
-    }
+    this.dataEmitFunc(event.url)
     this.breadcrumb.links$.next(this.navLink)
   });  
+  }
+  async dataEmitFunc(url: any) {
+    if(url === "/admin/settings/taxdelivery-charges") {
+      this.navLink[1] = {url, name: "Tax & Delivery Charges"}
+      this.newItemEvent.emit(this.attributeService.taxAndDeliveryDataResp);
+    }
+    if(url === "/admin/settings/cms") {
+      this.navLink[1] = {url, name: "CMS"}
+      this.newItemEvent.emit(this.attributeService.cmsDataResp);
+    }
+    if(url === "/admin/settings/pincodes") {
+      this.navLink[1] = {url, name: "Pincodes"}
+      this.newItemEvent.emit(this.attributeService.pincodeDataResp);
+    }
+    if(url === "/admin/settings/sliders") {
+      this.navLink[1] = {url, name: "Sliders"}
+      this.newItemEvent.emit(this.attributeService.sliderDataResp);
+    }
+    if(url === "/admin/settings/contact-details") {
+      this.navLink[1] = {url, name: "Contact Details"}
+      this.newItemEvent.emit(this.attributeService.contactUsDataResp);
+    }
+    if(url === "/admin/settings/social-links") {
+      this.navLink[1] = {url, name: "Social Links"}
+      this.newItemEvent.emit(this.attributeService.socialLinkDataResp);
+    }
   }
 }

@@ -18,7 +18,6 @@ import { TableComponent } from '../../components/table/table.component';
 export class SettingComponent{
   myLink = [{url: "/admin/settings", name: "Settings"}]
   myTableAttributes: any= []
-  isReady: boolean = false
   constructor(
     private router: Router,
     private cdref: ChangeDetectorRef
@@ -32,8 +31,6 @@ export class SettingComponent{
     this.cdref.detectChanges();
   }
   async receiveMessage($event: any) {
-    this.isReady = true
     this.myTableAttributes = $event
-    console.log("ngonint", this.myTableAttributes)
   }
 }
