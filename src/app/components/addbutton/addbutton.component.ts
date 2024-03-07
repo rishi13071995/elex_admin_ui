@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter   } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ModalService } from '../../subjects/modal.service';
 
 @Component({
   selector: 'app-addbutton',
@@ -9,5 +10,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   styleUrl: './addbutton.component.less'
 })
 export class AddbuttonComponent {
-
+  @Output() modelItemEvent = new EventEmitter<any>();
+  constructor(){}
+  async ngOnInit() {
+  }
+  async addHandler() {
+    this.modelItemEvent.emit(true)
+  }
 }

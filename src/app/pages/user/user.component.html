@@ -1,6 +1,7 @@
 <app-searchbar class="searchItem"></app-searchbar>&nbsp;
 <div class="leftItems">
     <app-uploadfile></app-uploadfile>&nbsp;
-    <app-addbutton></app-addbutton>
+    <app-addbutton (modelItemEvent)="addBtn($event)"></app-addbutton>
 </div>
+<app-modal *ngIf="isModelOpen"></app-modal>
 <app-table [tableAttributes]="myTableAttributes"></app-table>

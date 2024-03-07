@@ -13,7 +13,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrl: './transaction.component.less'
 })
 export class TransactionComponent {
-  myTableAttributes: any = [{ keys: ["Tansaction No.", "Order No.", "Payment Created.", "Actions"] }, { values: [{ transNo: 1, orderNo:1, paymentCreated: "20-02-2021"},{ transNo: 2, orderNo:2, paymentCreated: "24-02-2021"}] }, { actions: ["edit", "delete"] }]
+  myTableAttributes: any = [{ keys: ["Tansaction No.", "Order No.", "Payment Created.", "Actions"] }, { values: [{_id:1, transNo: 1, orderNo:1, paymentCreated: "20-02-2021"},{_id:2, transNo: 2, orderNo:2, paymentCreated: "24-02-2021"}] }, { actions: ["edit", "delete"] }]
   myLink = [{url: "/admin/transactions", name: "Transactions"}]
   constructor(
     private breadcrumb: BreadcrumbService
