@@ -20,7 +20,6 @@ export class HeaderComponent {
     private router: Router
   ) {}
   async ngOnInit() {
-    console.log("navUrl", this.navUrl)
   }
   async logoutHandler() {
     this.router.navigateByUrl("/login")

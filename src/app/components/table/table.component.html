@@ -28,7 +28,10 @@ nzShowSizeChanger
       <p *ngIf="key !== 'imgUrl' && key !== '_id'">{{data[key]}}</p>
     </td>
     <td class="actionItems">
-      <span *ngFor="let action of tableAttributes[2].actions" nz-icon nzType="{{action}}" nzTheme="outline"><span *ngIf="action === 'delete'">  |</span></span>
+      <span *ngFor="let action of tableAttributes[2].actions" nz-icon nzType="{{action}}" (click)="idWiseFunc(action, data)" nzTheme="outline">
+        <span *ngIf="action === 'delete'">  |</span>  
+      </span>
+      </td>
   </tr>
 </tbody>
 </nz-table>

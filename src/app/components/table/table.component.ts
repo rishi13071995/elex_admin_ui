@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, Output, EventEmitter } from '@angular/core';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 })
 export class TableComponent {
   @Input() tableAttributes: any = [{ keys: [] }, { values: [] }, { actions: [] }]
+  @Output() editDeleteEvent = new EventEmitter<any>();
   nameKeys: any = []
   listOfData: any = []
   listOfSelection = [
@@ -60,8 +61,12 @@ export class TableComponent {
   }
 
   ngOnInit(): void {
-    console.log("tableAttributes", this.tableAttributes)
     this.nameKeys = Object.keys(this.tableAttributes[1].values[0])
     this.listOfData = this.tableAttributes[1].values
   }
+  async idWiseFunc(action: any, value:any) {
+    console.log("action, _id", action, value)
+    this.editDeleteEvent.emit({ action, value })
+  }
+
 }

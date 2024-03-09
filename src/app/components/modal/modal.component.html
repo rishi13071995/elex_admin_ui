@@ -1,8 +1,25 @@
-<button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
-    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-      <ng-container *nzModalContent>
-        <p>Content one</p>
-        <p>Content two</p>
-        <p>Content three</p>
-      </ng-container>
-    </nz-modal>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{dataAttributes.titleName}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <form nz-form>
+      <nz-form-item *ngFor="let key of keys;">
+        <nz-form-label [nzSpan]="6" nzFor="email">{{key}}</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input *ngIf="keyTypes[key] === 'text'" nz-input name="keysName[key]" value="{{keysValue[keysName[key]]}}" type="keyTypes[key]" id="email" />
+          <nz-button-group *ngIf="this.keyTypes[key] === 'dropdown'">
+            <!-- <button nz-button *ngIf="dropdowns.values[0][key] === keysValue[keysName[key]]">{{dropdowns.values[0].key}}</button> -->
+            <button nz-button *ngIf="!keysValue[keysName[key]]">{{menuBtnName}}</button>
+            <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
+              <span nz-icon nzType="ellipsis"></span>
+            </button>
+            </nz-button-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    </ng-container>
+</nz-modal>
+
+<nz-dropdown-menu #menu1="nzDropdownMenu">
+  <ul nz-menu>
+    <li *ngFor="let dropdown of dropdowns.keys" nz-menu-item (click)="dropdownFunc(dropdown, dropdowns.value[0][dropdown])">{{dropdown}}</li>
+  </ul>
+</nz-dropdown-menu>
