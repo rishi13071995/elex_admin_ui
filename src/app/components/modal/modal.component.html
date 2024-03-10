@@ -6,8 +6,7 @@
         <nz-form-control [nzSpan]="14">
           <input *ngIf="keyTypes[key] === 'text'" nz-input name="keysName[key]" value="{{keysValue[keysName[key]]}}" type="keyTypes[key]" id="email" />
           <nz-button-group *ngIf="this.keyTypes[key] === 'dropdown'">
-            <!-- <button nz-button *ngIf="dropdowns.values[0][key] === keysValue[keysName[key]]">{{dropdowns.values[0].key}}</button> -->
-            <button nz-button *ngIf="!keysValue[keysName[key]]">{{menuBtnName}}</button>
+            <button nz-button>{{menuBtnName}}</button>
             <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
               <span nz-icon nzType="ellipsis"></span>
             </button>

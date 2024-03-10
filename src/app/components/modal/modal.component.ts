@@ -32,13 +32,7 @@ export class ModalComponent {
     this.keysValue = this.dataAttributes.keysValue
     this.keyTypes = this.dataAttributes.keyTypes
     this.dropdowns = this.dataAttributes.dropdowns
-    this.menuBtnName = this.dataAttributes.dropdowns.keys[0] 
-    console.log("keys", this.keys)
-    console.log("keysName", this.keysName)
-    console.log("keysValue", this.keysValue)
-    console.log("dropdowns", this.dropdowns)
-    console.log("keyTypes", this.keyTypes)
-
+    this.menuBtnName = Object.keys(this.dropdowns.value[0]).find(key => this.dropdowns.value[0][key] === this.keysValue.role) ? Object.keys(this.dropdowns.value[0]).find(key => this.dropdowns.value[0][key] === this.keysValue.role) : this.dropdowns.keys[0]
   }
 
   handleOk(): void {

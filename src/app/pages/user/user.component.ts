@@ -28,6 +28,7 @@ export class UserComponent {
     this.breadcrumb.links$.next(this.myLink)
   }
   async addBtn($event:any) {
+    this.myAttributes.keysValue = {}
     this.isModelOpen = $event
   }
   async modalEventFunc($event: any) {
