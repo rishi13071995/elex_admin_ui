@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UserComponent {
   @Input() isModelOpen: any = false
+  @Input() myBtnName: any = "Add User"
   @Input() myAttributes = { titleName: "Add User",  keys: ["Name", "Age", "Adderss", "Role"], keysName: { Name: "name", Age: "age", Adderss: "adderss", Role: "role"}, keysValue: {}, keyTypes: { Name: "text", Age: "text",Adderss:"text", Role: "dropdown" },dropdowns :  { keys: ["Admin", "Normal"], value: [{ Admin: "admin", Normal: "normal" }] } }
   myTableAttributes: any = [{ keys: ["Name", "Age", "Adderss", "Role", "Actions"] }, { values: [{ _id:1, name: "John wicks", age: "29", adderss: "Kolkata", role: "admin"},{_id:2, name: "Kelvin Patty", age: "39", adderss: "Kolkata", role: "normal"}] }, { actions: ["edit", "delete"] }]
   myLink = [{url: "/admin/user", name: "Users"}]

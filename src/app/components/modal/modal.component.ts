@@ -6,11 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { CommonModule } from '@angular/common';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [NzModalModule, NzButtonModule, FormsModule, NzFormModule, CommonModule, NzDropDownModule],
+  imports: [NzModalModule, NzButtonModule, FormsModule, NzFormModule, CommonModule, NzDropDownModule, NzUploadModule,NzIconModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.less'
 })
@@ -24,7 +27,9 @@ export class ModalComponent {
   dropdowns: any = []
   isVisible = true;
   menuBtnName : any = ""
-  constructor() {}
+  constructor(
+    private msg: NzMessageService
+  ) {}
 
   async ngOnInit() {
     this.keys = this.dataAttributes.keys
@@ -52,5 +57,16 @@ export class ModalComponent {
   dropdownFunc(key: any, value: any) {
     this.menuBtnName = key
     console.log("menuBtnName", this.menuBtnName)
+  }
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+      // this.myAttributes.keysValue
+    }
+    if (info.file.status === 'done') {
+      this.msg.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      this.msg.error(`${info.file.name} file upload failed.`);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter   } from '@angular/core';
+import { Component, Output, EventEmitter, Input  } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ModalService } from '../../subjects/modal.service';
 
@@ -10,6 +10,7 @@ import { ModalService } from '../../subjects/modal.service';
   styleUrl: './addbutton.component.less'
 })
 export class AddbuttonComponent {
+  @Input() btnName:any = ""
   @Output() modelItemEvent = new EventEmitter<any>();
   constructor(){}
   async ngOnInit() {

@@ -1,7 +1,8 @@
-<app-common (newItemEvent)="receiveMessage($event)" [navLink]="myLink"></app-common>
+<app-common (newItemEvent)="receiveMessage($event)" (myBtnEvent)="recevieMsgBtnInFo($event)" (myAttributesEvent)="recevieAttributeMsg($event)" [navLink]="myLink"></app-common>
 <app-searchbar class="searchItem"></app-searchbar>&nbsp;
 <div class="leftItems">
     <app-uploadfile></app-uploadfile>&nbsp;
-    <app-addbutton></app-addbutton>
+    <app-addbutton (modelItemEvent)="addBtn($event)" [btnName]="myBtnName"></app-addbutton>
 </div>
-<app-table [tableAttributes]="myTableAttributes"></app-table>
+<app-modal *ngIf="isModelOpen" [dataAttributes]="myAttributes" (modalEvent)="modalEventFunc($event)"></app-modal>
+<app-table (editDeleteEvent)="valueDetailsFunc($event)" [tableAttributes]="myTableAttributes"></app-table>
