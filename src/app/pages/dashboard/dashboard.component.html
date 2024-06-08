@@ -1,0 +1,39 @@
+<div nz-row [nzGutter]="6" class="topItems">
+    <div nz-col nzSpan="6">
+        <nz-card class="topCards" [nzActions]="[actionSetting]">
+                <h1>120+</h1>
+                <span nz-icon class="topCardIcon" nzType="user-add" nzTheme="outline"></span>
+            Total Customer Registerd.
+          </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+        <nz-card class="topCards" [nzActions]="[actionSetting]">
+            <h1>400+</h1>
+            <span nz-icon class="topCardIcon" nzType="pie-chart" nzTheme="outline"></span>
+            Total Products.
+          </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+        <nz-card class="topCards" [nzActions]="[actionSetting]">
+            <h1>280+</h1>
+            <span nz-icon class="topCardIcon" nzType="snippets" nzTheme="outline"></span>
+            Total Today's Orders.
+          </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+        <nz-card class="topCards" [nzActions]="[actionSetting]">
+            <h1>1750$+</h1>
+            <span nz-icon class="topCardIcon" nzType="fund" nzTheme="outline"></span>
+            Total Today Order Price.
+          </nz-card>
+    </div>
+  </div>
+  <ng-template #actionSetting class="actionSettingClass">
+    <a>More Info.
+        <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+    </a>
+  </ng-template>
+
+  <nz-card style="height: 15px;">
+    <app-table style="height: 10px;" [tableAttributes]="myTableAttributes"></app-table>
+  </nz-card>

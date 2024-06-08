@@ -1,0 +1,39 @@
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{dataAttributes.titleName}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <form nz-form>
+      <nz-form-item *ngFor="let key of keys;">
+        <nz-form-label [nzSpan]="8" nzFor="email">{{key}}</nz-form-label>
+        <nz-form-control [nzSpan]="14">
+          <input *ngIf="keyTypes[key] === 'text'" nz-input name="keysName[key]" value="{{keysValue[keysName[key]]}}" type="keyTypes[key]" id="email" />
+          <input *ngIf="keyTypes[key] === 'number'" nz-input name="keysName[key]" value="{{keysValue[keysName[key]]}}" type="keyTypes[key]" id="email" />
+          <img src="{{keysValue[keysName[key]]}}" *ngIf="keyTypes[key] === 'image'" nz-input name="keysName[key]" type="keyTypes[key]" id="email" class="imgIcon"/>
+          <br/><br/>
+          <nz-upload *ngIf="keyTypes[key] === 'image'"
+          nzAction=""
+          [nzHeaders]="{ authorization: 'authorization-text' }"
+          (nzChange)="handleChange($event)"
+          >
+          <button nz-button>
+            <span nz-icon nzType="upload"></span>
+            Click to Upload
+          </button>
+          </nz-upload>
+          <nz-button-group *ngIf="this.keyTypes[key] === 'dropdown'">
+            <button nz-button>{{menuBtnName}}</button>
+            <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
+              <span nz-icon nzType="ellipsis"></span>
+            </button>
+            </nz-button-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    </ng-container>
+</nz-modal>
+
+<nz-dropdown-menu #menu1="nzDropdownMenu">
+  <ul nz-menu>
+    <li *ngFor="let dropdown of dropdowns.keys" nz-menu-item (click)="dropdownFunc(dropdown, dropdowns.value[0][dropdown])">{{dropdown}}</li>
+  </ul>
+</nz-dropdown-menu>
+
+

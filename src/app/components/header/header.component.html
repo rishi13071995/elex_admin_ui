@@ -1,0 +1,27 @@
+<!-- <nz-page-header class="site-page-header" nzBackIcon></nz-page-header> -->
+<span>
+    <app-breadcrumb class="breadCrumb" [navLinks]="navUrl"></app-breadcrumb>
+    <nz-button-group class="profile">
+        <!-- <button nz-button> </button> -->
+        <button nz-button nz-dropdown [nzDropdownMenu]="menu2" nzPlacement="bottomRight">
+            John Wicks (Admin)<span nz-icon nzType="user"></span>
+        </button>
+      </nz-button-group>
+</span>
+
+<nz-dropdown-menu #menu2="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        My Profile
+    </li>
+      <li nz-menu-item (click)="logoutHandler()">
+        <span nz-icon nzType="logout" nzTheme="outline"></span>
+        Logout
+    </li>
+    </ul>
+</nz-dropdown-menu>
+
+
+
+

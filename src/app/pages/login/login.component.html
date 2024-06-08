@@ -1,0 +1,31 @@
+<nz-card style="width:350px;" [nzCover]="coverTemplate"> 
+    <nz-card-meta class="adminFont" [nzAvatar]="avatarTemplate" nzTitle="Admin Panel (v1.0-alpha)">
+        
+    </nz-card-meta>
+    <span class="inputBox">
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your email!">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="userEmail" placeholder="Email" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="userPassword" placeholder="Password" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+        </form>
+        </span>
+    
+</nz-card>
+<ng-template #coverTemplate>
+    <img src="../../../assets/logo.png" height="200" width="50px">
+</ng-template>
+<ng-template #avatarTemplate>
+    <span nz-icon class="displayIcon" nzType="fund-projection-screen" nzTheme="outline"></span>
+</ng-template>

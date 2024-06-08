@@ -1,0 +1,98 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+      nzCollapsible
+      nzWidth="256px"
+      nzBreakpoint="md"
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a target="_blank">
+          <img src="../../../assets/logo.png" alt="logo">
+          <h1>Namashkar</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-submenu nzClose nzTitle="Dashboard" nzIcon="dashboard">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/dashboard">Dashboard</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzClose nzTitle="User Management" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/customers">Customers</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/users">Users</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzClose nzTitle="Order Management" nzIcon="ordered-list">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/orders">Orders</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/transactions">Transactions</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzClose nzTitle="Product Management" nzIcon="folder-open">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/parentcategories">Parent Categories</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/childcategories">Child Categories</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/products">Products</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzClose nzTitle="Setup" nzIcon="setting">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/taxdelivery-charges">Tax & Delivery Charges</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/pincodes">Pincodes</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/sliders">Sliders</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/contact-details">Contact Details</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/social-links">Social Links</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/admin/settings/cms">CMS</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <span class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              >
+            </span>     
+          </span>
+          <app-header [navUrl]="navLinks"></app-header> 
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
